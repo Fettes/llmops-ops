@@ -1,0 +1,8 @@
+"""
+@Time: 2025/4/1 16:51
+@Author: fengtianshi@kuaishou.com
+@File: __init__.py.py
+"""
+from .router import Router
+
+__all__ = ["Router"]
