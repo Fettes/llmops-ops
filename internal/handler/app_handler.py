@@ -12,10 +12,6 @@ from internal.exception import FailException
 from internal.schema import CompletionReq
 from pkg.response import json_response_success, json_response_validate_error
 
-# API_KEY和API_URL从环境变量中读取
-API_KEY = os.getenv("API_KEY_FREE")
-API_URL = os.getenv("API_URL_FREE")
-
 
 class AppHandler:
     """ 应用控制器 """
@@ -30,8 +26,8 @@ class AppHandler:
 
         # 2. 构建DeepSeek客户端，并发起请求
         client = OpenAI(
-            api_key=API_KEY,
-            base_url=API_URL,
+            api_key=os.getenv("API_KEY_FREE"),
+            base_url=os.getenv("API_URL_FREE"),
         )
 
         # 3. 得到请求响应，然后将Deepseek的响应传递给前端

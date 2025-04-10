@@ -33,5 +33,7 @@ class HttpServer(Flask):
             return json_response(
                 Response(code=error.code, message=error.message, data=error.data if error.data is not None else {}))
         # 2. 如果不是我们自定义的异常，则有可能是程序，数据库等异常，也可以抛出信息，设置未Fail代码
+        if self.debug:
+            raise error
         else:
             return json_response(Response(code=HttpCode.FAIL, message=str(error), data={}))
